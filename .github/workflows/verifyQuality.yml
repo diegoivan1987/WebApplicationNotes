@@ -11,6 +11,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      run: cd notes-app
 
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
