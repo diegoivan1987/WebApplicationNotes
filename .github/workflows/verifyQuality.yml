@@ -1,4 +1,5 @@
-name: "CodeQL"
+name: Verificar Calidad
+run-name: workflow para verificar calidad
 
 on:
   workflow_dispatch:
