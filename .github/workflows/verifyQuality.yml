@@ -2,13 +2,7 @@ name: CodeQL
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    # Los pull requests dirigidos a estas ramas activarán el análisis
-    branches: [ main ]
-  schedule:
-    # Programa la ejecución del análisis una vez al día
-    - cron: '0 0 * * *'
+    branches: [ backend ]
 
 jobs:
   analyze:
@@ -23,8 +17,6 @@ jobs:
       fail-fast: false
       matrix:
         language: [ 'javascript', 'typescript' ]
-        # Si se desean analizar múltiples lenguajes, añádelos aquí:
-        # language: [ 'javascript', 'python', 'go', 'java', 'typescript' ]
 
     steps:
     - name: Checkout repository
