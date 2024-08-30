@@ -14,13 +14,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Change folder
-      run: cd notes-app
-
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
       with:
         languages: typescript
+
+    - name: Change folder
+      run: cd notes-app
 
     - name: Autobuild
       run: |
