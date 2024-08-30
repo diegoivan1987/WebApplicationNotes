@@ -14,20 +14,16 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-   # - name: Initialize CodeQL
-   #   uses: github/codeql-action/init@v2
-   #   with:
-   #     languages: typescript
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: typescript
 
     - name: Autobuild
       run: |
-         pwd
-         ls
          cd notes-app
-         pwd
-         ls
-    #    npm install
-    #    npm run build
+         npm install
+         npm run build
 
-  #  - name: Perform CodeQL Analysis
-   #   uses: github/codeql-action/analyze@v2
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
