@@ -24,6 +24,11 @@ jobs:
       
     - name: See folders
       run: ls
+    
+    - run: cd notes-app
+
+    - name: See folders2
+      run: ls
 
    # - name: Autobuild
     #  run: |
