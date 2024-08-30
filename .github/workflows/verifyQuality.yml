@@ -18,9 +18,12 @@ jobs:
       uses: github/codeql-action/init@v2
       with:
         languages: typescript
+    
+    - name: Check current directory
+      run: pwd
 
     - name: Change folder
-      run: cd notes-app
+      run: cd /home/runner/work/WebApplicationNotes/WebApplicationNotes/notes-app/
 
     - name: Autobuild
       run: |
