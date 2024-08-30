@@ -1,29 +1,45 @@
-name: Verificar Calidad
-run-name: workflow para verificar calidad
+name: CodeQL
 
 on:
   push:
-    branches:
-      - backend
+    branches: [ main ]
+  pull_request:
+    # Los pull requests dirigidos a estas ramas activarán el análisis
+    branches: [ main ]
+  schedule:
+    # Programa la ejecución del análisis una vez al día
+    - cron: '0 0 * * *'
 
 jobs:
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'javascript', 'typescript' ]
+        # Si se desean analizar múltiples lenguajes, añádelos aquí:
+        # language: [ 'javascript', 'python', 'go', 'java', 'typescript' ]
+
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
       with:
-        languages: typescript
+        languages: ${{ matrix.language }}
 
     - name: Autobuild
       run: |
-         cd notes-app
-         npm install
-         npm run build
+        cd notes-app
+        npm install
+        npm run build
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
